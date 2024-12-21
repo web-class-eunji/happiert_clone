@@ -1,14 +1,423 @@
-body {
-    height: 5000px;
-    padding: 0;
-    margin: 0;
+@font-face {
+    font-family: 'Noto Sans KR';
+    src : url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Noto+Sans+KR:wght@100..900&display=swap');
+    font-weight: normal;
 }
 
-.scroll_bar {
+body {
+    font-family: 'Noto Sans KR';
+}
+
+/* 스크롤바시작 */
+::-webkit-scrollbar {
+    width: 5px;
+    /* 
+width : 오른쪽에 붙어있는 세로 스크롤바 두께
+ */
+}
+
+::-webkit-scrollbar-track {
+    /* 스크롤바의 트랙 ( 배경영역 ) */
+    background: #e4e4e4;
+}
+
+::-webkit-scrollbar-thumb {
+    /* 3. 스크롤바의 이동 가능한 막대 (thumb) */
+    background: #be201f;
+}
+/* 스크롤바끝 */
+
+/* 헤더 시작 */
+header {
     position: fixed;
-    background-color: rgb(206, 168, 242);
-    height: 10px;
     top: 0;
     left: 0;
-    width: 0;
+    width: 100%;
+    transition: 0.5s;
 }
+
+header.hide {
+    transform: translateY(50%);
+    opacity: 0;
+}
+
+.sign_up_popup {
+    background-color: #be201f;
+    text-align: center;
+    height: 45px;
+    line-height: 45px;
+}
+
+.sign_up_popup > a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    padding: 0 80px;
+}
+
+.menu {
+    display: flex;
+    width: 550px
+}
+
+.menu > li {
+    margin: 0 16px;
+}
+
+.menu > li > a {
+    font-size: 20px;
+    color: #be201f;
+    text-decoration:  none;
+    font-weight: 900;
+}
+
+.menu > li > a::after {
+    content: '';
+    width: 0;
+    height: 2px;
+    display: block;
+    background: #be201f;
+    margin-top: 10px;
+    transition: 0.5s;
+}
+
+.menu > li:hover a::after {
+    width: 100%;
+}
+
+.logo {
+    width: 550px;
+    text-align: center;
+}
+
+.headder_icons {
+    width: 550px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.headder_icons > li {
+    margin: 0 16px;
+}
+/* 헤더 끝 */
+
+/* 메인 컨테이너 시작 */
+.main_container {
+    height: 100vh;
+}
+.main_background {
+    background-image: url(../img/main_background.png);
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.main_texts {
+    position: absolute;
+    top: 300px;
+    left: 100px;
+}
+
+.main_texts > h2 {
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    line-height: 60px;
+} 
+
+.main_texts > p {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.fixed_icons {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+}
+
+.fixed_icons > a {
+    display: block;
+    margin: 8px 0;
+}
+/* 메인 컨테이너 끝 */
+
+/* 쉐이크 시작 */
+.shake_type_container {
+    margin-top: 100px;
+}
+
+.shake_plan {
+    display: flex;
+    justify-content: center;
+}
+
+.shake > a > img {
+    width: 550px;
+    margin: 0 25px;
+}
+
+.shake_texts {
+    margin: 16px 25px;
+    color: #be201f;
+}
+
+.shake_name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.shake_discount {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.shake_price {
+    color: #e0a8a8;
+    text-decoration: line-through;
+}
+
+.discount_rate {
+    border: 1px solid #be201f;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 25px;
+}
+/* 쉐이크 끝 */
+
+
+/* 회전텍스트애니메이션 시작 */
+.animation_text_container {
+    width: 100%;
+    font-family: "ghanachoco";
+    overflow: hidden;
+    margin: 100px 0;
+}
+.animation_text {
+    display: flex;
+    animation: roll 100s infinite linear;
+    /* animation: name이름  duration지속시간 timing-function타이밍함수  delay대기시간  iteration-count반복횟수  direction애니메이션방향  fill-mode전후상태  play-state재생/정지; */
+    width: max-content;
+    /* 
+    max-content란? html 요소의 너비를 최대한 늘리고 싶을때 사용
+    최대 너비 역시 담고있는 컨텐츠의 의해 좌우된다.
+    텍스트 컨텐츠의 경우 줄바꿈을 하지 않으면 문장의 길이가 길어지겠죠?
+    자식요소가 부모요소를 삐져나가서 콘텐츠만큼의 영역을 차지하게됨
+    꾸밈이 있을 때 사용하기! 
+     */
+    align-items: center;
+}
+    
+.animation_text {
+    padding: 10px;
+    font-size: 150px;
+    color: #be201f;
+}
+
+@keyframes roll {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+/* 회전텍스트애니메이션 끝 */
+
+
+/* diet_technique_container 시작 */
+.diet_technique_container > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.diet_technique_container > ul > li > img {
+    width: 550px;
+    margin: 0 25px;
+}
+
+.diet_technique_container > ul:first-child {
+    margin-bottom: 50px;
+}
+
+.diet_technique_text {
+    color: #be201f;
+    display: flex;
+    padding: 60px 40px;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 550px;
+    box-sizing: border-box;
+    margin: 0 25px;
+}
+
+.diet_technique_text > div > h2 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: -6px;
+}
+
+.diet_technique_text > div > p {
+    font-size: 20px;
+}
+
+.button {
+    width: fit-content;
+    background: none;
+    border: 1px solid #be201f;
+    border-radius: 45px;
+    padding: 14px 0;
+}
+
+.button > a {
+    color: #be201f;
+    text-decoration: none;
+    padding: 16px 34px;
+    font-size: 20px;
+    transition: 0.3s;
+    border-radius: 45px;
+}
+
+.button > a:hover {
+    background: #be201f;
+    color: #fff;
+}
+/* diet_technique_container 끝 */
+
+
+/* identity_container > identity_text 시작 */
+.identity_text {
+    padding: 150px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.identity_text > h2 {
+    font-size: 120px;
+    color: #be201f;
+    line-height: 160px;
+}
+
+.identity_text > h2 > span {
+    border: 2px solid #be201f;
+    padding: 0 70px 16px 70px;
+    border-radius: 150px;
+}
+
+.identity_text > figure {
+    animation: identity_ani 10s linear infinite;
+}
+
+@keyframes identity_ani {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+/* identity_container > identity_text 끝 */
+
+
+/* identity_container > identity_content 시작 */
+.identity_content {
+    background-image: url(../img/identity_content_backgroound.png);
+    height: 738px;
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 35px;
+    color: #fff;
+}
+
+.identity_content > h2 {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.identity_content > p {
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.button.white_btn {
+    border: 1px solid #ffffff;
+}
+
+.button.white_btn > a {
+    color: #ffffff;
+}
+
+.button.white_btn > a:hover {
+    background: #fff;
+    color: #be201f;
+}
+
+
+/* footer 시작 */
+footer {
+    background: #be201f;
+    padding: 100px 80px 140px;
+    font-size: 20px;
+}
+
+.footer_content {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+}
+
+footer > figure {
+    margin-bottom: 60px;
+}
+
+.footer_title {
+    margin-bottom: 24px;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.info_texts > p {
+    margin-bottom: 7px;
+}
+
+.info_texts > p:last-child {
+    margin-bottom: 50px;
+}
+
+.guide {
+    width: 250px;
+}
+
+.guide > li {
+    padding: 16px 0;
+    /* text-decoration: underline; */
+    border-bottom: 1px solid #fff;
+}
+
+.guide > li > a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.contact > div {
+    line-height: 32px;
+}
+
+.plus_friend {
+    margin-bottom: 32px;
+}
+
+.plus_friend > p:first-child {
+    font-size: 30px;
+}
+/* footer 끝 */
